@@ -41,10 +41,15 @@ char *opcode;
 void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
+int isnumber(char *str);
+stack_t *add_dnodeint(stack_t **head, const int n);
+stack_t *add_dnodeint_end(stack_t **head, const int n);
+void _push(stack_t **stack, unsigned int line_number);
+void _pall(stack_t **stack, __attribute__ ((unused))unsigned int line_number);
 typedef void (*instruct_func)(stack_t **stack, unsigned int line_number);
-void read_file(char *filename, stack_t **stack);
 instruct_func get_op_func(char *str);
 char *parse_line(char *line);
 void error_exit(stack_t **stack);
 void free_dlistint(stack_t *head);
+void read_file(char *filename, stack_t **stack);
 #endif

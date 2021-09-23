@@ -1,3 +1,4 @@
+#include <stdlib.h>
 #include "monty.h"
 /**
  * read_file - reads a bytecode file and runs commands
@@ -20,6 +21,7 @@ if (file == NULL)
 printf("Error: Can't open file %s\n", filename);
 error_exit(stack);
 }
+
 while ((read = getline(&buffer, &i, file)) != -1)
 {
 line = parse_line(buffer);

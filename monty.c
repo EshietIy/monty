@@ -2,8 +2,8 @@
 int sq_flag = 0;
 /**
  * main - driver function for monty program
- * @ac: int num of arguments
- * @av: opcode file
+ * @argc: int num of arguments
+ * @argv: opcode file
  * Return: 0
  */
 int main(int argc, char **argv)
