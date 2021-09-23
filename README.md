@@ -1,52 +1,61 @@
-# Monty
+# Monty Bytecode Interpreter
 
-Monty 0.98 is a scripting language that is first compiled into Monty byte codes (Just like Python). It relies on a unique stack, with specific instructions to manipulate it. The project is an interpreter for Monty ByteCodes files.
+### Documentation
 
-## Getting Started
+## Installation
+- compile with the following:
+  - gcc -Wall -Werror -Wextra -pedantic *.c -o monty
+  - usage: ./monty <filename>
+    - filename should contain the Operators
+    - One operator per line
+    - spaces and newlines are ignored
+    - '#' sign represent comments and the line will be ignored
 
-Ensure that you have **gcc** installed and build the program with `bash ./build.bash`. This would generate an executable called `monty`. Run the program with `./monty file`.
+## Monty Language
+Monty 0.98 is a scripting language that is first compiled into Monty byte codes (Just like Python). It relies on a unique stack, with specific instructions to manipulate it. The goal of this project is to create an interpreter for Monty ByteCodes files.
 
-## Supported Opcodes
+- monty.h - contains all the structure and prototype
+- main.c - main function for monty interpreter
 
-| Name | Description |
-|:--:|:--|
-| push | Pushes an element to the stack. Usage: `push integer` |
-| pall | Prints all the values on the stack, starting from the top of the stack |
-| pint | Prints the value at the top of the stack, followed by a new line |
-| pop | Removes the top element of the stack |
-| swap | Swaps the top two elements of the stack |
-| add | Adds the top two elements of the stack |
-| nop | Does nothing |
-| sub | Subtracts the top element of the stack from the second top element of the stack |
-| div | Divides the second top element of the stack by the top element of the stack |
-| mul | Multiplies the second top element of the stack with the top element of the stack |
-| mod | Computes the rest of the division of the second top element of the stack by the top element of the stack |
-| pchar | Prints the char at the top of the stack, followed by a new line |
-| pstr | Prints the string starting at the top of the stack, followed by a new line |
-| rotl | Rotates the stack to the top |
-| rotr | Rotates the stack to the bottom |
-| stack | Sets the format of the data to a stack (LIFO). This is the default behavior of the program |
-| queue| Sets the format of the data to a queue (FIFO) |
+## Helper
+- newline_check.c - checks if the first character in a line is a newline
+- tokenizer.c - tokenizes the command and value in the line
+- find_op.c - uses the first token (command) to find what operator(instruction) to use
+- list_len.c - returns the number of element in the stack
+- free_l.c - free everything on the stack
+- check_val.c - checks if everything on the second command are all digits
 
-## Commenting
-
-Comments start with the `#` character after all the leading whitespaces have been skipped.
-
-## Examples
-
-```m
-push 1
-push 2
-push 10
-push 3
-sub
-pall
-```
-
-```m
-push 56
-push 72
-pchar
-```
-
-To see more samples, visit [here](./samples)
+## Operator Instruction
+- push - pushes value to stack
+  - usage: push 123
+- pall - prints everything on the stack LIFO
+  - usage: pall
+- pint - prints the top value of the stack
+  - usage: pint
+- add - adds the top two elements of the stack
+  - usage: add
+- sub - subtracts the top element of the stack from the second top element of the stack
+  - usage: sub
+- swap - swaps the top two elements of the stack
+  - usage: swap
+- pop - removes the top element of the stack
+  - usage: pop
+- nop - doesn't do anything
+  - usage: nop
+- div - divides the second top element of the stack by the top element of the stack
+  - usage: div
+- mul - multiplies the second top element of the stack with the top element of the stack
+  - usage: mul
+- mod - computes the rest of the division of the second top element of the stack by the top element of the stack
+  - usage: mod
+- pchar - prints the char at the top of the stack, followed by a new line
+  - usage: pchar
+- pstr - prints the string starting at the top of the stack, followed by a new line.
+  - usage: pstr
+- rotl - rotates the stack to the top. The top element of the stack becomes the last one, and the second top element of the stack becomes the first one
+  - usage: rotl
+- rotr - rotates the stack to the bottom. The last element of the stack becomes the top element of the stack
+  - usage: rotr
+### Authors
+Eshiet, Eshiet
+Henry Ugwuoke
