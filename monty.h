@@ -6,7 +6,7 @@
 #include <string.h>
 #include <unistd.h>
 #include <ctype.h>
-extern int sq_flag;
+
 
 /*--- Struct Definitions ---*/
 /**
